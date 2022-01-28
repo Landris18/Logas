@@ -1,0 +1,4 @@
+prog/
+api/channels/
+__pycache__/
+api/__pycache__
