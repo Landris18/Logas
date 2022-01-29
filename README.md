@@ -1,2 +1,2 @@
 # Logas
-Sports streaming application
+Sports streaming application for sports lover 😍
