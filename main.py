@@ -20,7 +20,7 @@ cursor = db.cursor()
 scraper = cloudscraper.create_scraper()
 
 chrome_options = Options()
-chrome_options.headless = True
+chrome_options.headless = False
 
 
 def empty_program():
