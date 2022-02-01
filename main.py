@@ -3,7 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 from datetime import time
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from bs4 import BeautifulSoup
@@ -19,8 +19,8 @@ cursor = db.cursor()
 
 scraper = cloudscraper.create_scraper()
 
-chrome_options = Options()
-chrome_options.headless = False
+options = Options()
+options.headless = True
 
 
 def empty_program():
@@ -109,7 +109,7 @@ def get_program():
 
 
 def get_channel():
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Firefox(options=options)
     lien_pass = []
 
     for link in link_list:
