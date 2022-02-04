@@ -83,27 +83,32 @@ def get_program():
                 link_list = []
 
                 for line in file:
-                    if line[0].isupper():
-                        hold = line.split()[0]
-                    else:
-                        output = hold + ' | ' + line.split()[0] + ' | ' +  ' '.join(line.split()[1:]) 
-                        final = list(map(lambda x: x.strip(), output.split("|")))
+                    try: 
+                        if line[0].isupper():
+                            hold = line.split()[0]
+                        else:
+                            output = hold + ' | ' + line.split()[0] + ' | ' +  ' '.join(line.split()[1:]) 
+                            final = list(map(lambda x: x.strip(), output.split("|")))
 
-                        h, m = tuple(final[1].split(':'))
+                            h, m = tuple(final[1].split(':'))
 
-                        jour = final[0]
-                        heure = time(hour=int(h), minute=int(m))
-                        titre = final[2].replace(" x ", " vs ")
-                        titre = titre.replace(" @ ", " vs ")
-                        chaine = final[3].split("/")[-1].split(".")[0].upper()
+                            jour = final[0]
+                            heure = time(hour=int(h), minute=int(m))
+                            titre = final[2].replace(" x ", " vs ")
+                            titre = titre.replace(" @ ", " vs ")
 
-                        program = {
-                            "jour":jour, "heure":heure, "titre":titre, "chaine":chaine, "statut":"Terminé"
-                        }
+                            chaine = final[3].split("/")[-1].split(".")[0].upper()
 
-                        link_list.append(final[3])
-                        set_data_program(program)
-                        
+                            program = {
+                                "jour":jour, "heure":heure, "titre":titre, "chaine":chaine, "statut":"Terminé"
+                            }
+
+                            link_list.append(final[3])
+                            set_data_program(program)
+
+                    except IndexError:
+                        continue
+   
     except Exception as e:
         print(e)
 
